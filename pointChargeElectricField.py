@@ -91,12 +91,12 @@ class Animation(Scene):
         self.play(Write(indicatorOne), Write(indicatorTwo))
         positiveFieldNext = MathTex("E_{+}", "=", r"k", r"\frac{3 \text{ nC}}{r^2}", r"\hat{r}")
         self.play(Transform(indicatorOne, SurroundingRectangle(positiveFieldNext[3][0:3])),
-        ReplacementTransform(positiveField, positiveFieldNext))
+        TransformMatchingShapes(positiveField, positiveFieldNext))
         
         positiveField = positiveFieldNext
         positiveFieldNext = MathTex("E_{+}", "=", r"k", r"\frac{3 \times 10^{-9} \text{ C}}{r^2}", r"\hat{r}")
         self.play(Transform(indicatorOne, SurroundingRectangle(positiveFieldNext[3][0:7])),
-        ReplacementTransform(positiveField, positiveFieldNext))
+        TransformMatchingShapes(positiveField, positiveFieldNext))
 
         self.play(Transform(indicatorOne, SurroundingRectangle(positiveField[3][7:9])),
         Transform(indicatorTwo, SurroundingRectangle(horizontalLabel)))
@@ -104,12 +104,12 @@ class Animation(Scene):
         positiveField = positiveFieldNext
         positiveFieldNext = MathTex("E_{+}", "=", r"k", r"\frac{3 \times 10^{-9} \text{ C}}{(5 \text{ cm})^2}", r"\hat{r}")
         self.play(Transform(indicatorOne, SurroundingRectangle(positiveFieldNext[3][7:13])),
-        ReplacementTransform(positiveField, positiveFieldNext))
+        TransformMatchingShapes(positiveField, positiveFieldNext))
 
         positiveField = positiveFieldNext
         positiveFieldNext = MathTex("E_{+}", "=", r"k", r"\frac{3 \times 10^{-9} \text{ C}}{0.05^2 \text{ m}^2}", r"\hat{r}")
         self.play(Transform(indicatorOne, SurroundingRectangle(positiveFieldNext[3][7:15])),
-        ReplacementTransform(positiveField, positiveFieldNext))
+        TransformMatchingShapes(positiveField, positiveFieldNext))
         self.play(Unwrite(indicatorOne), Unwrite(indicatorTwo))
 
         positiveField=positiveFieldNext 
@@ -117,17 +117,17 @@ class Animation(Scene):
         positiveFieldNext = MathTex("E_{+}", "=", r"\frac{1}{4\pi\epsilon_0}", r"\frac{3 \times 10^{-9} \text{ C}}{0.05^2 \text{ m}^2}", r"\hat{r}")
         self.play(Write(indicatorOne))
         self.play(Transform(indicatorOne, SurroundingRectangle(positiveFieldNext[2])),
-        ReplacementTransform(positiveField, positiveFieldNext))
+        TransformMatchingShapes(positiveField, positiveFieldNext))
  
         positiveField=positiveFieldNext 
         positiveFieldNext = MathTex("E_{+}", "=", r"8.99 \times 10^9 \frac{\text{N}\text{m}^2}{\text{C}^2}", r"\frac{3 \times 10^{-9} \text{ C}}{0.05^2 \text{ m}^2}", r"\hat{r}")
         self.play(Transform(indicatorOne, SurroundingRectangle(positiveFieldNext[2])),
-        ReplacementTransform(positiveField, positiveFieldNext))
+        TransformMatchingShapes(positiveField, positiveFieldNext))
         self.play(Unwrite(indicatorOne), Unwrite(indicatorTwo))
 
         positiveField = positiveFieldNext;
         positiveFieldNext = MathTex("E_{+}", "=", r"8.99 \times 10^9", r"\frac{3 \times 10^{-9} }{0.05^2}", r"\frac{\text{N}}{\text{C}}", r"\hat{r}")
-        self.play(ReplacementTransform(positiveField, positiveFieldNext))
+        self.play(TransformMatchingShapes(positiveField, positiveFieldNext))
         self.wait()
          
         # Draw arrow to indicate field induced by positive charge
@@ -139,7 +139,7 @@ class Animation(Scene):
         indicatorOne = SurroundingRectangle(positiveFieldNext[5])
         indicatorTwo= SurroundingRectangle(arrow)
         self.play( Write(indicatorTwo ))
-        self.play(ReplacementTransform(positiveField, positiveFieldNext), Transform(indicatorTwo, indicatorOne))
+        self.play(TransformMatchingShapes(positiveField, positiveFieldNext), Transform(indicatorTwo, indicatorOne))
         self.play(Unwrite(indicatorOne), Unwrite(indicatorTwo), Unwrite(arrow))
         positiveField = positiveFieldNext
 
@@ -158,11 +158,11 @@ class Animation(Scene):
         indicatorTwo = SurroundingRectangle(negativeField[3][0])
         self.play(Write(indicatorOne), Write(indicatorTwo))
         negativeFieldNext = MathTex("E_{-}", "=", r"k", r"\frac{-6 \text{ nC}}{r^2}", r"\hat{r}")
-        self.play(ReplacementTransform(negativeField, negativeFieldNext),Transform(indicatorTwo, SurroundingRectangle(negativeFieldNext[3][0:4])))
+        self.play(TransformMatchingShapes(negativeField, negativeFieldNext),Transform(indicatorTwo, SurroundingRectangle(negativeFieldNext[3][0:4])))
         negativeField = negativeFieldNext
 
         negativeFieldNext = MathTex("E_{-}", "=", r"k", r"\frac{-6 \times 10^{-9} \text{ C}}{r^2}", r"\hat{r}")
-        self.play(ReplacementTransform(negativeField, negativeFieldNext), Transform(indicatorTwo, SurroundingRectangle(negativeFieldNext[3][0:8])))
+        self.play(TransformMatchingShapes(negativeField, negativeFieldNext), Transform(indicatorTwo, SurroundingRectangle(negativeFieldNext[3][0:8])))
         self.play(Unwrite(indicatorOne), Unwrite(indicatorTwo))
         negativeField = negativeFieldNext
         line = Line(start=negative.get_center(), end=point.get_center()).set_color(BLUE).set_z_index(positive.z_index - 1)
@@ -182,7 +182,7 @@ class Animation(Scene):
         negativeFieldNext = MathTex("E_{-}", "=", r"k", r"\frac{-6 \times 10^{-9} \text{ C}}{0.05^2 + 0.1^2 \text{ m}}", r"\hat{r}")
         curvedArrow = CurvedArrow(start_point=lineLabel.get_center() + RIGHT*0.4, end_point=negativeField[3][9].get_center() + DOWN*0.3)
         self.play(Write(curvedArrow))
-        self.play(ReplacementTransform(negativeField, negativeFieldNext), 
+        self.play(TransformMatchingShapes(negativeField, negativeFieldNext), 
         Transform(indicatorTwo, SurroundingRectangle(negativeFieldNext[3][9:20])))
         self.wait()
         self.play(Unwrite(curvedArrow), Unwrite(indicatorOne), Unwrite(indicatorTwo), Unwrite(line), Unwrite(lineLabel))
@@ -192,7 +192,7 @@ class Animation(Scene):
         curvedArrow = CurvedArrow(start_point = positiveField[2].get_center() + DOWN *0.3, end_point = negativeField[2].get_center() + UP *0.3)
         self.play(Write(curvedArrow))
         negativeFieldNext = MathTex("E_{-}", "=", r"8.99 \times 10^9 \frac{\text{N}\text{m}^2}{\text{C}^2}", r"\frac{-6 \times 10^{-9} \text{ C}}{0.05^2 + 0.1^2 \text{ m}}", r"\hat{r}")
-        self.play(ReplacementTransform(negativeField, negativeFieldNext), 
+        self.play(TransformMatchingShapes(negativeField, negativeFieldNext), 
         Transform(indicatorOne, SurroundingRectangle(negativeFieldNext[2])))
         self.wait()
         self.play(Unwrite(curvedArrow), Unwrite(indicatorOne), Unwrite(indicatorTwo))
@@ -202,7 +202,7 @@ class Animation(Scene):
         SurroundingRectangle(negativeField[3][19]))
         self.play(Write(units))
         negativeFieldNext = MathTex("E_{-}", "=", r"8.99 \times 10^9", r"\frac{-6 \times 10^{-9} }{0.05^2 + 0.1^2 }", r"\frac{\text{N}}{\text{C}}", r"\hat{r}")
-        self.play(ReplacementTransform(negativeField, negativeFieldNext), 
+        self.play(TransformMatchingShapes(negativeField, negativeFieldNext), 
         Transform(units, SurroundingRectangle(negativeFieldNext[4]))) 
         self.wait()
         negativeField = negativeFieldNext
@@ -221,16 +221,16 @@ class Animation(Scene):
         self.wait()
 
         arrowLabelNext = MathTex(r"\hat{r} = sin{(\theta)} \hat{i} + cos{(\theta)} \hat{j}").next_to(arrow, RIGHT).set_color(BLUE).scale(0.8)
-        self.play(ReplacementTransform(arrowLabel, arrowLabelNext))
+        self.play(TransformMatchingShapes(arrowLabel, arrowLabelNext))
         self.wait()
         arrowLabel = arrowLabelNext
         arrowLabelNext = MathTex(r"\hat{r} = \frac{0.05}{\sqrt{0.1^2 + 0.05^2}} \hat{i} + \frac{0.1}{\sqrt{0.05^2 + 0.01^2}} \hat{j}").scale(0.8).next_to(arrow, RIGHT).set_color(BLUE)
-        self.play(ReplacementTransform(arrowLabel, arrowLabelNext))
+        self.play(TransformMatchingShapes(arrowLabel, arrowLabelNext))
         self.wait()
         arrowLabel = arrowLabelNext
 
         negativeFieldNext = MathTex("E_{-}", "=", r"8.99 \times 10^9", r"\frac{-6 \times 10^{-9} }{0.05^2 + 0.1^2 }", r"\frac{\text{N}}{\text{C}}", r"(\frac{0.05}{\sqrt{0.1^2 + 0.05^2}} \hat{i} + \frac{0.1}{\sqrt{0.05^2 + 0.01^2}} \hat{j})").scale(0.6).shift(RIGHT)
-        self.play(ReplacementTransform(negativeField, negativeFieldNext))
+        self.play(TransformMatchingShapes(negativeField, negativeFieldNext))
         self.wait()
         negativeField = negativeFieldNext
         self.play(Unwrite(arrowLabel),Unwrite(arrow),Unwrite(angle), Unwrite(angleLabel), Unwrite(dashed))
@@ -240,8 +240,8 @@ class Animation(Scene):
         negativeFieldNext = MathTex("E_{-}", "=", r"(-1929.816\hat{i} - 3859.632 \hat{j})", r"\frac{\text{N}}{\text{C}}").move_to(negativeField)
         positiveFieldNext = MathTex("E_{+}", "=", r"(10788\hat{i} + 0\hat{j})", r"\frac{\text{N}}{\text{C}}").move_to(positiveField)
 
-        self.play(ReplacementTransform(negativeField, negativeFieldNext),
-        ReplacementTransform(positiveField, positiveFieldNext))
+        self.play(TransformMatchingShapes(negativeField, negativeFieldNext),
+        TransformMatchingShapes(positiveField, positiveFieldNext))
         self.wait()
         negativeField = negativeFieldNext
         positiveField = positiveFieldNext
@@ -251,48 +251,51 @@ class Animation(Scene):
         group.add(superposition)
         superCombined = MathTex("E_{net}", "=", r"[(10788\hat{i} + 0\hat{j}) +(-1929.816\hat{i} - 3859.632 \hat{j})]", r"\frac{\text{N}}{\text{C}}").scale(0.7)
         superCombinedNext = MathTex("E_{net}", "=", r"(8858.184\hat{i} - 3859.632\hat{j}) ", r"\frac{\text{N}}{\text{C}}").scale(0.7)
-        self.play(ReplacementTransform(group, superCombined))
+        self.play(TransformMatchingShapes(group, superCombined))
         self.wait()
         group = superCombined
-        self.play(ReplacementTransform(group, superCombinedNext))
+        self.play(TransformMatchingShapes(group, superCombinedNext))
         self.wait()
         group = superCombinedNext
         superCombinedNext = MathTex("\|E_{net}\|", "=", r"\sqrt{(8858.184\hat{i})^2 + (-3859.632\hat{j})^2} ", r"\frac{\text{N}}{\text{C}}").scale(0.7)
 
-        self.play(ReplacementTransform(group, superCombinedNext))
+        self.play(TransformMatchingShapes(group, superCombinedNext))
         group = superCombinedNext
 
         superCombinedNext = MathTex("\|E_{net}\|", "=", r"9662.51", r"\frac{\text{N}}{\text{C}}").scale(0.7)
         self.wait()
-        self.play(ReplacementTransform(group, superCombinedNext))
+        self.play(TransformMatchingShapes(group, superCombinedNext))
         group = superCombinedNext
         self.wait() 
         self.play(Flash(currentProblem))
         currentProblemNext = Text("1. (B)").align_on_border(UL)
-        self.play(ReplacementTransform(currentProblem, currentProblemNext))
+        self.play(TransformMatchingShapes(currentProblem, currentProblemNext))
         currentProblem=currentProblemNext
 
         self.wait()
 
         superCombinedNext = MathTex("E_{net}", "=", r"(8858.184\hat{i} - 3859.632\hat{j}) ", r"\frac{\text{N}}{\text{C}}").scale(0.7)
-        self.play(ReplacementTransform(group, superCombinedNext.shift(UP * 2)))
+        self.play(TransformMatchingShapes(group, superCombinedNext.shift(UP * 2)))
         group = superCombinedNext
 
         angle = MathTex(r"\text{Angle of }", r"E_{net}", "=", r"\arctan{( \frac{ \hat{j} }{ \hat{i} } )}")
         self.play(Write(angle))
         
         angleNext = MathTex(r"\text{Angle of }", r"E_{net}", "=", r"\arctan{(\frac{-3859.632}{8858.184 })}")
-        self.play(ReplacementTransform(angle, angleNext))
+        self.play(TransformMatchingShapes(angle, angleNext))
         angle = angleNext
 
         angleNext = MathTex(r"\text{Angle of }", r"E_{net}", "=", r"-23.54^o \text{ CC}")
         self.wait()
-        self.play(ReplacementTransform(angle, angleNext))
+        self.play(TransformMatchingShapes(angle, angleNext))
         angle = angleNext
         self.wait()
         angleNext = MathTex(r"\text{Angle of }", r"E_{net}", "=", r"23.54^o \text{ CW}")
-        self.play(ReplacementTransform(angle, angleNext))
+        self.play(TransformMatchingShapes(angle, angleNext))
         angle = angleNext
+        self.play(Unwrite(angle))
+        rect = Square().scale(20).set_color(WHITE)
+        self.play(Write(rect))
         self.wait()
 with tempconfig({"quality": "low_quality", "preview": True}):
     scene = Animation()
